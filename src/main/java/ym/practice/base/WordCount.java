@@ -30,7 +30,7 @@ public class WordCount {
         return m.size();
     }
     
-    public void add(String word, int count) {
+    public WordCount add(String word, int count) {
         AtomicInteger cc = m.get(word);
         if (cc != null) {
             cc.addAndGet(count);
@@ -45,12 +45,14 @@ public class WordCount {
                 m.put(word, new AtomicInteger(count));
             }
         }
+        return this;
     }
 
-    public void add(WordCount wc) {
+    public WordCount add(WordCount wc) {
         for (Map.Entry<String, AtomicInteger> e : wc.m.entrySet()) {
             add(e.getKey(), e.getValue().get());
         }
+        return this;
     }
     
     public void set(String word, int count) {
