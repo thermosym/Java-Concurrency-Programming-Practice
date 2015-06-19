@@ -83,11 +83,14 @@ public class FuturePractice {
 	}
 	
 	public void listenableFutureExample() {
-	    ListeningExecutorService executor = MoreExecutors.listeningDecorator(Executors.newFixedThreadPool(NUMBER_OF_THREADS));
+		ListeningExecutorService executor = MoreExecutors
+				.listeningDecorator(Executors
+						.newFixedThreadPool(NUMBER_OF_THREADS));
 	    Callable<String> asyncTask = new Callable<String>() {
 	        @Override
 	        public String call() throws Exception {
-	        	throw new RuntimeException("die");
+	        	// do something
+	        	return "ok";
 	        }
 	    };
 	 
